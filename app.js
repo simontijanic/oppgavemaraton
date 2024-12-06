@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const routes = require('./routes/default');
+const routes = require('./routes/admin');
 const registration = require('./routes/registration');
 const xprsssession = require('express-session');
 
