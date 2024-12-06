@@ -1,0 +1,30 @@
+<%- include('./partials/head') %>
+
+<div class="users-container">
+  <h1>All Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.username %></td>
+          <td>
+            <form action="/api/users/<%= user._id %>/delete" method="POST">
+                <button type="submit" class="delete-btn">X</button>
+            </form>
+            <form action="/api/users/<%= user._id %>/upgrade" method="POST">
+                <button type="submit" class="upgrade-btn">Y</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('./partials/foot') %>

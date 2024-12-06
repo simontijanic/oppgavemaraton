@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
 
         const isMatch = bcrypt.compare(password, user.password)
         if (isMatch) {
-            req.session.userId = user._id;
+            req.session.userId = { id: user._id, username: user.username, role: user.role };
             res.redirect('/api/mongo-world');
         } else {
             console.error("wrong passweord")
