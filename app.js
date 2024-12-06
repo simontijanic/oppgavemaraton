@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const routes = require('./routes/default');
+const dbHandler = require("./handlers/dbHandler")
 
 app.use('/api', routes);
 
@@ -15,4 +16,5 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
     console.log("listening");
+    dbHandler();
 });

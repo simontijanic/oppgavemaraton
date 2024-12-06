@@ -1,0 +1,7 @@
+<%- include('./partials/head') %>
+<div class="greetings">
+    <% greetings.forEach(greeting => { %>
+        <p><%= greeting.message %></p>
+    <% }) %>
+</div>
+<%- include('./partials/foot') %>

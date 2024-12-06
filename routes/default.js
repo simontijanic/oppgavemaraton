@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const greeting = require("../models/greeting")
 
 router.get('/helloworld', async (req, res) => {
     try {
@@ -8,5 +9,16 @@ router.get('/helloworld', async (req, res) => {
         console.log(errr);
     }
 });
+
+router.get('/mongo-world', async (req, res) => {
+    try {
+        const greetings = await greeting.find()
+
+        res.render('mongo', { greetings });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 
 module.exports = router;
