@@ -30,5 +30,13 @@ router.get("/mongo-world", autentisert, async (req, res) => {
   }
 });
 
+router.get("/galleri", autentisert, async (req, res) => {
+    try {
+        res.render("galleri");
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
 
 module.exports = router;
