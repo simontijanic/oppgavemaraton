@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const greeting = require("../models/greeting");
 
 router.get("/helloworld", async (req, res) => {
@@ -10,7 +11,16 @@ router.get("/helloworld", async (req, res) => {
   }
 });
 
-router.get("/mongo-world", async (req, res) => {
+function autentisert(req, res, next) {
+    if (req.session.userId) {
+        return next();
+    } else {
+        res.redirect('/index');
+    }
+}
+
+
+router.get("/mongo-world", autentisert, async (req, res) => {
   try {
     const greetings = await greeting.find();
 
@@ -19,5 +29,6 @@ router.get("/mongo-world", async (req, res) => {
     console.log(err);
   }
 });
+
 
 module.exports = router;
